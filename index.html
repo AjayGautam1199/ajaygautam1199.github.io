@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajaykumar Gautam | Embedded Systems Engineer</title>
+    <meta name="description" content="Electronics Engineer specializing in IoT, Embedded Systems, and EV Technologies. Award-winning innovator in medical devices and sustainable energy solutions.">
+    <meta name="keywords" content="Embedded Systems, IoT, PCB Design, EV Technology, STM32, ESP32, Medical Devices">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0A192F;
+            --secondary: #64FFDA;
+            --light: #CCD6F6;
+            --dark: #020C1B;
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            color: var(--secondary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding: 12rem 5% 5rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .description {
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+            color: rgba(204, 214, 246, 0.8);
+        }
+
+        .profile-photo {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 0 40px rgba(100, 255, 218, 0.2);
+            transition: var(--transition);
+        }
+
+        /* Particles Container */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Button Styles */
+        .button-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .cta-button:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .resume-button {
+            background: var(--secondary);
+            color: var(--primary);
+            border: 2px solid var(--secondary);
+        }
+
+        .resume-button:hover {
+            background: rgba(100, 255, 218, 0.9);
+        }
+
+        /* Education Section */
+        .education {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .education-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: rgba(100, 255, 218, 0.03);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .education-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .institution {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .duration {
+            color: rgba(136, 146, 176, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-badge {
+            background: rgba(100, 255, 218, 0.1);
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 6rem 5%;
+        }
+            .skill-items {
+            padding: 0.5rem 0;
+            line-height: 1.8;
+        }
+            .skill-items p {
+            margin: 0.5rem 0;
+            color: rgba(204, 214, 246, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1.2rem;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+        }
+
+        .skill-card {
+            background: rgba(100, 255, 218, 0.03);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 5%;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(100, 255, 218, 0.03);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-container {
+        position: relative;
+        height: 250px;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+
+    }
+  
+    .project-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: opacity 0.5s ease;
+        background: var(--primary);
+        padding: 1rem;
+    }
+    .project-image.active {
+        opacity: 1;
+        z-index: 2;
+    }
+    .project-image:not(.active) {
+        opacity: 0;
+        z-index: 1;
+    }
+
+
+    .image-toggle-text {
+        color: var(--secondary);
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        opacity: 0.8;
+        text-align: center;
+    } 
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--secondary);
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .github-link {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .github-link a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .profile-photo {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+
+            .education-card {
+                padding: 1.5rem;
+            }
+                .skill-items p {
+                font-size: 0.9rem;
+            }
+            
+            .skill-card {
+                padding: 1.5rem;
+            }
+        }
+            @media (max-width: 480px) {
+        .skills-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .skill-items p {
+            line-height: 1.6;
+        }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            animation: fadeIn 0.6s forwards;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav" aria-label="Main navigation">
+            <a href="#" class="logo">AG</a>
+            <div class="button-group">
+                <a href="https://drive.google.com/file/d/1EsSvTjji06fhThCFYltGspVc1WgCx117/view?usp=drive_link" 
+                   class="cta-button resume-button"
+                   download="Curriculun_Vitae_Ajaykumar_Gautam.pdf">
+                   <i class="fas fa-file-download"></i> Resume
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div id="particles-js"></div>
+            <div class="hero-content">
+                <div class="hero-grid">
+                    <div class="hero-text scroll-reveal">
+                        <p class="subtitle">Hi, my name is</p>
+                        <h1 class="title">Ajaykumar Gautam</h1>
+                        <h2 class="title" style="color: #8892B0;">Embedded Systems Engineer</h2>
+                        <p class="description">
+                            Dedicated Electronics Engineer with a strong background in Embedded systems, PCB design, and IoT development. Recognized for thoughtful innovation in medical technology and EV systems, I focus on creating practical solutions that bridge advanced engineering with real-world applications.
+                        </p>
+                            
+                        <div class="button-group">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaygautam1199@gmail.com&su=Exciting%20Opportunity&body=Dear%20Ajay,%0D%0A%0D%0AI%20hope%20this%20message%20finds%20you%20well.%0D%0A%0D%0AI%20am%20very%20impressed%20with%20your%20skills%20and%20would%20like%20to%20discuss%20an%20exciting%20opportunity%20that%20I%20believe%20could%20be%20a%20great%20fit%20for%20you.%0D%0A%0D%0APlease%20let%20me%20know%20a%20good%20time%20to%20connect,%20or%20alternatively,%20feel%20free%20to%20share%20your%20contact%20details.%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you.%0D%0A%0D%0ABest%20Regards,%0D%0A%0D%0A[Your%20Name]" class="cta-button">Get In Touch</a>
+
+                        </div>
+                    </div>
+                    <div class="scroll-reveal">
+                        <img src="images/profile.webp" 
+                             alt="Ajaykumar Gautam - Embedded Systems Engineer" 
+                             class="profile-photo"
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education">
+            <div class="education-grid">
+                <h2 class="scroll-reveal">Education</h2>
+                <div class="education-card scroll-reveal">
+                    <i class="fas fa-graduation-cap education-icon"></i>
+                    <h3>Bachelor of Technology in Electronics Engineering</h3>
+                    <p class="institution">G.H. Raisoni College of Engineering, Nagpur</p>
+                    <p class="duration">2020-2024 | CGPA: 8.69</p>
+                    <div class="achievement-badge">
+                        <i class="fas fa-award"></i>
+                        Gold Medal (Department Topper)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <h2 class="scroll-reveal">Technical Expertise</h2>
+            <div class="skills-grid">
+                      <!-- Programming Languages -->
+            <div class="skill-card scroll-reveal">
+                <i class="fas fa-code skill-icon"></i>
+                <h3>Programming</h3>
+                <div class="skill-items">
+                    <p>C/C++ • Python • Java • Kotlin</p>
+                    <p>HTML • CSS • JavaScript</p>
+                </div>
+            </div>
+                 <!-- Frameworks & Tools -->
+            <div class="skill-card scroll-reveal">
+                <i class="fas fa-tools skill-icon"></i>
+                <h3>Frameworks & Tools</h3>
+                <div class="skill-items">
+                    <p>Firebase • Blynk IoT • Git/GitHub</p>
+                    <p>Makefile • KiCad • Altium • LTspice</p>
+                    <p>PSpice • Proteus 8 • Vivado</p>
+                    <p>SquareLine Studio • VS Code • PlatformIO</p>
+                    <p>Arduino IDE • Keil IDE • ProgISP</p>
+                    <p>STM32Cube IDE • ST-Link • MATLAB/Simulink</p>
+                    <p>Android Studio • Blender • Shapr3D</p>
+                    <p>Creality Slicer • PuTTY • Lopaka</p>
+                    <p>LottieFiles • Figma</p>
+                </div>
+            </div>
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-bolt skill-icon"></i>
+                    <h3>EV Technology</h3>
+                    <p>BMS Design • Motor Control • CAN Bus</p>
+                </div>
+            </div>
+                    <!-- Development Practices -->
+            <div class="skill-card scroll-reveal">
+                <i class="fas fa-laptop-code skill-icon"></i>
+                <h3>Development Practices</h3>
+                <div class="skill-items">
+                    <p>Testing • Debugging • Documentation</p>
+                </div>
+            </div>
+
+            <!-- Core Knowledge Areas -->
+            <div class="skill-card scroll-reveal">
+                <i class="fas fa-brain skill-icon"></i>
+                <h3>Core Knowledge</h3>
+                <div class="skill-items">
+                    <p>Embedded Systems</p>
+                    <p>PCB Layout Designing</p>
+                    <p>Analog & Digital Circuit Design</p>
+                    <p>Internet of Things (IoT)</p>
+                    <p>Hardware Designing</p>
+                    <p>Embedded Programming (C/C++)</p>
+                    <p>3D Modeling & Animation</p>
+                </div>
+            </div>
+
+            <!-- Communication Protocols -->
+            <div class="skill-card scroll-reveal">
+                <i class="fas fa-network-wired skill-icon"></i>
+                <h3>Communication Protocols</h3>
+                <div class="skill-items">
+                    <p>I2C • SPI • UART • CAN</p>
+                    <p>8-bit Parallel Interfacing</p>
+                    <p>WiFi • Bluetooth</p>
+                </div>
+            </div>
+        </section>
+
+  
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2 class="scroll-reveal">Featured Projects</h2>
+            <div class="project-card scroll-reveal">
+                <div class="image-container"     
+                role="button" 
+                aria-label="Toggle between macropad views"
+                tabindex="0">
+                    <img src="images/projects/macropad1.webp" 
+                         alt="Macropad Front View" 
+                         class="project-image active"
+                         loading="lazy">
+                    <img src="images/projects/macropad2.webp" 
+                         alt="Macropad Back View" 
+                         class="project-image"
+                         loading="lazy">
+                </div>
+                <div class="project-content">
+                    <h3>Macropad</h3>
+                    <div class="project-tags">
+                        <span class="tag">STM32</span>
+                        <span class="tag">PCB Design</span>
+                        <span class="tag">IoT</span>
+                    </div>
+                    <p>Developed and designed firmware, PCB layouts, and circuits for Micropad. Created a working
+                       prototype using the STM32F103 microcontroller, Cherry switches, Rotary encoder and Hub IC SL2.1A.</p>
+                    <p class="image-toggle-text">Click image to view different angles</p>
+                </div>
+            </div>
+            <div class="github-link scroll-reveal">
+                <a href="https://github.com/ajaygautam1199" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i> Explore More on GitHub
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#64FFDA' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#64FFDA',
+                    opacity: 0.4,
+                    width: 1
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+ // Image Toggle Functionality
+ document.querySelectorAll('.image-container').forEach(container => {
+        const images = container.querySelectorAll('.project-image');
+        
+        container.addEventListener('click', () => {
+            images.forEach(img => {
+                img.classList.toggle('active');
+                
+                // Add keyboard accessibility
+                container.addEventListener('keydown', (e) => {
+                    if(e.key === 'Enter' || e.key === ' ') {
+                        img.classList.toggle('active');
+                    }
+                });
+            });
+        });
+
+        // Add hover effect
+        container.addEventListener('mouseenter', () => {
+            container.style.transform = 'scale(1.02)';
+        });
+        
+        container.addEventListener('mouseleave', () => {
+            container.style.transform = 'scale(1)';
+        });
+    });
+
+    // Add touch event listener
+    container.addEventListener('touchstart', handleTouchStart, false);        
+    container.addEventListener('touchmove', handleTouchMove, false);
+
+    let xDown = null;
+
+    function handleTouchStart(evt) {
+        xDown = evt.touches[0].clientX;
+    }
+
+    function handleTouchMove(evt) {
+        if (!xDown) return;
+        
+        const xUp = evt.touches[0].clientX;
+        const xDiff = xDown - xUp;
+        
+        if (Math.abs(xDiff) > 5) {
+            images.forEach(img => img.classList.toggle('active'));
+        }
+        xDown = null;
+    }
+        // Scroll Reveal Animation
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            scrollRevealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if(elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
+</body>
+</html>
