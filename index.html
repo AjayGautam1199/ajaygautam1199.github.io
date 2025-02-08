@@ -41,7 +41,14 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+        @font-face {
+            font-family: 'fast-trackregular';
+            src: url('font/fast-track-webfont.woff2') format('woff2'),
+                url('font/fast-track-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
 
+        }
         /* Header Styles */
         .header {
             padding: 1.5rem 5%;
@@ -138,6 +145,7 @@
 
         /* Button Styles */
         .button-group {
+            font-family: 'fast-trackregular', serif;
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
@@ -222,45 +230,123 @@
         .skills {
             padding: 6rem 5%;
         }
-            .skill-items {
-            padding: 0.5rem 0;
-            line-height: 1.8;
-        }
-            .skill-items p {
-            margin: 0.5rem 0;
-            color: rgba(204, 214, 246, 0.9);
-            font-size: 0.95rem;
-        }
 
-        .skill-card h3 {
-            margin-bottom: 1.2rem;
-        }
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 2rem auto 0;
         }
 
         .skill-card {
-            background: rgba(100, 255, 218, 0.03);
+            position: relative;
             padding: 2rem;
             border-radius: 8px;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: var(--transition);
+            background: var(--primary);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg at 50% 50%,
+                var(--secondary) 0deg,
+                transparent 60deg,
+                transparent 300deg,
+                var(--secondary) 360deg
+            );
+            animation: rotate 3s linear infinite;
+            z-index: -2;
+        }
+
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--primary);
+            border-radius: 7px;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
         }
 
+        .skill-card:hover::before {
+            animation-play-state: paused;
+        }
+
         .skill-icon {
             font-size: 2.5rem;
             color: var(--secondary);
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+            z-index: 1;
         }
 
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+        }
+
+        .skill-items {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .skill-items p {
+            margin: 0.5rem 0;
+            color: var(--light);
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        h3 {
+            color: var(--light);
+            margin-bottom: 1rem;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .skill-card {
+                padding: 1.5rem;
+            }
+            
+            .skill-items p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skill-items p {
+                line-height: 1.6;
+            }
+        }
         /* Projects Section */
         .projects {
             padding: 6rem 5%;
@@ -313,6 +399,7 @@
 
 
     .image-toggle-text {
+        font-family: 'fast-trackregular', serif;
         color: var(--secondary);
         font-size: 0.9rem;
         margin-top: 1rem;
@@ -412,6 +499,9 @@
                    download="Curriculun_Vitae_Ajaykumar_Gautam.pdf">
                    <i class="fas fa-file-download"></i> Resume
                 </a>
+                                <!-- <a href="https://linkedin.com/in/ajay-gautam-0573a7227" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin"></i> Linkedin
+                </a> -->
             </div>
         </nav>
     </header>
@@ -466,69 +556,75 @@
         <section id="skills" class="skills">
             <h2 class="scroll-reveal">Technical Expertise</h2>
             <div class="skills-grid">
-                      <!-- Programming Languages -->
-            <div class="skill-card scroll-reveal">
-                <i class="fas fa-code skill-icon"></i>
-                <h3>Programming</h3>
-                <div class="skill-items">
-                    <p>C/C++ • Python • Java • Kotlin</p>
-                    <p>HTML • CSS • JavaScript</p>
+                <!-- Programming Languages -->
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3>Programming</h3>
+                    <div class="skill-items">
+                        <p>C/C++ • Python • Java • Kotlin</p>
+                        <p>HTML • CSS • JavaScript</p>
+                    </div>
                 </div>
-            </div>
-                 <!-- Frameworks & Tools -->
-            <div class="skill-card scroll-reveal">
-                <i class="fas fa-tools skill-icon"></i>
-                <h3>Frameworks & Tools</h3>
-                <div class="skill-items">
-                    <p>Firebase • Blynk IoT • Git/GitHub</p>
-                    <p>Makefile • KiCad • Altium • LTspice</p>
-                    <p>PSpice • Proteus 8 • Vivado</p>
-                    <p>SquareLine Studio • VS Code • PlatformIO</p>
-                    <p>Arduino IDE • Keil IDE • ProgISP</p>
-                    <p>STM32Cube IDE • ST-Link • MATLAB/Simulink</p>
-                    <p>Android Studio • Blender • Shapr3D</p>
-                    <p>Creality Slicer • PuTTY • Lopaka</p>
-                    <p>LottieFiles • Figma</p>
+
+                <!-- Frameworks & Tools -->
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-tools skill-icon"></i>
+                    <h3>Frameworks & Tools</h3>
+                    <div class="skill-items">
+                        <p>Firebase • Blynk IoT • Git/GitHub</p>
+                        <p>Makefile • KiCad • Altium • LTspice</p>
+                        <p>PSpice • Proteus 8 • Vivado</p>
+                        <p>SquareLine Studio • VS Code • PlatformIO</p>
+                        <p>Arduino IDE • Keil IDE • ProgISP</p>
+                        <p>STM32Cube IDE • ST-Link • MATLAB/Simulink</p>
+                        <p>Android Studio • Blender • Shapr3D</p>
+                        <p>Creality Slicer • PuTTY • Lopaka</p>
+                        <p>LottieFiles • Figma</p>
+                    </div>
                 </div>
-            </div>
+
+                <!-- EV Technology -->
                 <div class="skill-card scroll-reveal">
                     <i class="fas fa-bolt skill-icon"></i>
                     <h3>EV Technology</h3>
-                    <p>BMS Design • Motor Control • CAN Bus</p>
+                    <div class="skill-items">
+                        <p>BMS Design • Motor Control • CAN Bus</p>
+                    </div>
                 </div>
-            </div>
-                    <!-- Development Practices -->
-            <div class="skill-card scroll-reveal">
-                <i class="fas fa-laptop-code skill-icon"></i>
-                <h3>Development Practices</h3>
-                <div class="skill-items">
-                    <p>Testing • Debugging • Documentation</p>
-                </div>
-            </div>
 
-            <!-- Core Knowledge Areas -->
-            <div class="skill-card scroll-reveal">
-                <i class="fas fa-brain skill-icon"></i>
-                <h3>Core Knowledge</h3>
-                <div class="skill-items">
-                    <p>Embedded Systems</p>
-                    <p>PCB Layout Designing</p>
-                    <p>Analog & Digital Circuit Design</p>
-                    <p>Internet of Things (IoT)</p>
-                    <p>Hardware Designing</p>
-                    <p>Embedded Programming (C/C++)</p>
-                    <p>3D Modeling & Animation</p>
+                <!-- Development Practices -->
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-laptop-code skill-icon"></i>
+                    <h3>Development Practices</h3>
+                    <div class="skill-items">
+                        <p>Testing • Debugging • Documentation</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Communication Protocols -->
-            <div class="skill-card scroll-reveal">
-                <i class="fas fa-network-wired skill-icon"></i>
-                <h3>Communication Protocols</h3>
-                <div class="skill-items">
-                    <p>I2C • SPI • UART • CAN</p>
-                    <p>8-bit Parallel Interfacing</p>
-                    <p>WiFi • Bluetooth</p>
+                <!-- Core Knowledge Areas -->
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3>Core Knowledge</h3>
+                    <div class="skill-items">
+                        <p>Embedded Systems</p>
+                        <p>PCB Layout Designing</p>
+                        <p>Analog & Digital Circuit Design</p>
+                        <p>Internet of Things (IoT)</p>
+                        <p>Hardware Designing</p>
+                        <p>Embedded Programming (C/C++)</p>
+                        <p>3D Modeling & Animation</p>
+                    </div>
+                </div>
+
+                <!-- Communication Protocols -->
+                <div class="skill-card scroll-reveal">
+                    <i class="fas fa-network-wired skill-icon"></i>
+                    <h3>Communication Protocols</h3>
+                    <div class="skill-items">
+                        <p>I2C • SPI • UART • CAN</p>
+                        <p>8-bit Parallel Interfacing</p>
+                        <p>WiFi • Bluetooth</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -565,7 +661,7 @@
             </div>
             <div class="github-link scroll-reveal">
                 <a href="https://github.com/ajaygautam1199" target="_blank" rel="noopener">
-                    <i class="fab fa-github"></i> Explore More on GitHub
+                    <i class="fab fa-github"></i> Explore More on GitHub       
                 </a>
             </div>
         </section>
