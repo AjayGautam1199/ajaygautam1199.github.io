@@ -1,0 +1,136 @@
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .hero-text {
+    text-align: left;
+  }
+
+  .hero-text .subtitle,
+  .hero-text .title {
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 240px;
+    height: 240px;
+    max-width: 80vw;
+    margin: 0 auto;
+  }
+
+  .description {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .button-group {
+    justify-content: flex-start;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(75vw, 320px);
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-lg);
+    background: rgba(10, 25, 47, 0.98);
+    backdrop-filter: blur(12px);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -10px 0 30px rgba(2, 12, 27, 0.7);
+  }
+
+  .nav-menu.is-open {
+    transform: translateX(0);
+  }
+
+  .nav-menu .nav-link a {
+    font-size: var(--fs-md);
+  }
+
+  .nav-cta {
+    margin-top: var(--space-sm);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 8rem 5% 4rem;
+  }
+
+  .education,
+  .about,
+  .skills,
+  .experience,
+  .projects,
+  .contact {
+    padding: 4rem 5%;
+  }
+
+  .skill-card {
+    min-height: auto;
+    padding: var(--space-md);
+  }
+
+  .education-card,
+  .experience-card {
+    padding: var(--space-md);
+  }
+}
+
+@media (max-width: 400px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-button {
+    justify-content: center;
+    width: 100%;
+  }
+}
