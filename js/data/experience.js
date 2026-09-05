@@ -1,12 +1,19 @@
 export const experience = [
   {
+    role: 'Engineer',
+    company: 'Temple Private Limited',
+    duration: 'Jun 2026 – Present',
+    description:
+      'Building embedded hardware and firmware systems at Temple, taking products from concept through to production.',
+  },
+  {
     role: 'Founding Embedded Engineer',
     company: 'Neuromuscular Labs Pvt. Ltd. (BETTR)',
     location: 'Gurugram, India',
-    duration: 'Aug 2025 – Present',
+    duration: 'Aug 2025 – Jun 2026',
     badge: 'Founding Team',
     description:
-      'Driving embedded firmware and hardware development at BETTR, building next-generation health-tech devices from concept to production.',
+      'Drove embedded firmware and hardware development at BETTR, building next-generation health-tech devices from concept to production.',
   },
 ];
 

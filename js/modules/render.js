@@ -55,7 +55,7 @@ export function renderExperience(target) {
       <article class="experience-card scroll-reveal">
         <h3>${escapeHTML(e.role)}</h3>
         <p class="institution">${escapeHTML(e.company)}</p>
-        <p class="duration">${escapeHTML(e.duration)} · ${escapeHTML(e.location)}</p>
+        <p class="duration">${escapeHTML(e.duration)}${e.location ? ` · ${escapeHTML(e.location)}` : ''}</p>
         ${e.badge ? `
           <div class="achievement-badge">
             <i class="fas fa-star" aria-hidden="true"></i>
